@@ -29,6 +29,9 @@ public class hw1 {
 				System.out.println("File already existed!");
 
 			}
+			
+			//part 1
+			
             FileWriter writer = new FileWriter(fout);
                 writer.write("Stdnt Id   Ex          Assignments           Total  Min  Fin  Cl  Pts  Pct  Gr\n");
                 writer.write("--------   --  ---------------------------   -----  ---  ---  --  ---  ---  --\n");
@@ -79,7 +82,10 @@ public class hw1 {
                     writer.write("\n");
                 }
                 writer.close();
-            //adding report file
+		
+            //adding summary report file
+	    // part 2
+	    
             Scanner sc=new Scanner(fout);
             int next=0;
             int sum=0;
@@ -143,17 +149,3 @@ public class hw1 {
 			  System.out.println(line);
 		  }
       }}
-
-
-
-
-
-
-
-
-
-            
-            
-            
-                    
-			
