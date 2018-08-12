@@ -1,0 +1,159 @@
+import static com.sun.org.apache.xalan.internal.xsltc.runtime.BasisLibrary.countF;
+import java.io.*;
+import static java.lang.Integer.max;
+import java.util.Scanner;
+public class hw1 {
+	public static void main(String args[]) throws IOException
+	{
+	
+		
+			File f=new File("C:\\Users\\Anurag verma\\Desktop\\HW-1input16103009.txt");
+			BufferedReader b=new BufferedReader(new FileReader(f));
+			String line;
+			int assign[]=new int[10];
+			int total;
+			int Min;
+			int Fin;
+			int Cl;
+			int Pts;
+			char Gr;
+			
+			File fout=new File("C:\\Users\\Anurag verma\\Desktop\\HW-116103009output.txt");
+			
+			if(fout.createNewFile())
+			{
+				System.out.println("File is Created!");
+			}
+			else
+			{
+				System.out.println("File already existed!");
+
+			}
+            FileWriter writer = new FileWriter(fout);
+                writer.write("Stdnt Id   Ex          Assignments           Total  Min  Fin  Cl  Pts  Pct  Gr\n");
+                writer.write("--------   --  ---------------------------   -----  ---  ---  --  ---  ---  --\n");
+                BufferedReader Br=new BufferedReader(new FileReader(fout));
+                
+                while((line=b.readLine())!=null)
+                {
+                    String st[]=line.split(" +");
+                    total=0;
+                    int Pct;
+                    for(int i=0;i<12;i++)
+                    {
+                        if(i>1)
+                        {
+                            total+=Integer.parseInt(st[i]);
+                            if(st[i].length()<2)
+                            
+                                writer.write(" ");
+                          
+                        }
+                        
+                      
+                        writer.write(st[i]+" ");
+                    }
+                    
+                    
+                    writer.write(total+" "+st[12]+" "+st[13]+" ");
+                    total+=Integer.parseInt(st[1])+Integer.parseInt(st[12])+Integer.parseInt(st[13])+Integer.parseInt(st[14]);
+                    if(st[14].length()<2)
+                        writer.write(" ");
+                    
+                    Pct=Math.round((total/420)*100);
+                    
+                    writer.write(st[14]+" "+total+" "+Pct+" ");
+                    
+                    if(Pct>90)
+                        Gr='A';
+                    else if(Pct>=78)
+                        Gr='B';
+                    else if(Pct>=62 )
+                        Gr='C';
+                    
+                    else if(Pct>=46)
+                        Gr='D';
+                    else
+                        Gr='F';
+                    writer.write(Gr);
+                    writer.write("\n");
+                }
+                writer.close();
+            //adding report file
+            Scanner sc=new Scanner(fout);
+            int next=0;
+            int sum=0;
+            int maxm=0;
+            int countA=0;
+            int countB=0;
+            int countC=0;
+            int countD=0;
+            int countF=0;
+            sc.nextLine();
+            sc.nextLine();
+            
+      while(sc.hasNextLine())
+      {
+          for(int i=0;i<16;i++)
+          {
+              next++;
+              sc.next();
+          }
+          int point=sc.nextInt();
+          sum+=point;
+          maxm=Math.max(maxm,point);
+          sc.next();
+          switch(sc.next().charAt(0))
+          {
+                          case 'A' : countA++;
+                                   break;
+			  case 'B' : countB++;
+                                    break;
+			  case 'C' : countC++;
+                                    break;
+			  case 'D' : countD++;
+                                    break;
+			  case 'F' : countF++;
+                                    break;
+	  }
+			  sc.nextLine();
+  }
+      
+      fout=new File("C:\\Users\\Anurag verma\\Desktop\\summaryreport.txt");
+      writer=new FileWriter(fout);
+      int avg=Math.round((sum/420)/16*100);
+      writer.write("Average total point percent of all students="+avg+"\n");
+       writer.write("Number of A's = "+countA+"\n");
+		  writer.write("Number of B's = "+countB+"\n");
+		  writer.write("Number of C's = "+countC+"\n");
+		  writer.write("Number of D's = "+countD+"\n");
+		  writer.write("Number of F's = "+countF+"\n");
+		  
+		  writer.write("\nMaximum points = " + maxm);
+		  
+		  writer.close();
+      
+          
+         Br = new BufferedReader(new FileReader(fout));
+		 
+		   Br = new BufferedReader(new FileReader(fout));
+		 
+		  while ((line= Br.readLine()) != null)
+		  {
+			  System.out.println(line);
+		  }
+      }}
+
+
+
+
+
+
+
+
+
+            
+            
+            
+                    
+			
